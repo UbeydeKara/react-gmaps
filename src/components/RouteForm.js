@@ -58,7 +58,7 @@ export default function RouteForm(props) {
                         e == "" ? null :
                             <Fade key={i} in={true}>
                                 <Step>
-                                    <StepLabel>{e.length > 30 ? e.substr(0, 15) + '...' : e}</StepLabel>
+                                    <StepLabel>{e.length > 50 ? e.substr(0, 50) + '...' : e}</StepLabel>
                                 </Step>
                             </Fade>
                     ))}

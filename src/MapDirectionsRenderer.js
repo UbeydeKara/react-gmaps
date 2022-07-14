@@ -12,7 +12,7 @@ function MapDirectionsRenderer(props) {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        if (locations[0] != "" && locations[1] != "") {
+        if (locations[0] != "" && locations[locations.length - 1] != "") {
             const { travelMode } = props;
 
             const waypoints = locations.slice(2, locations.length).filter(loc => loc != "").map(p => ({
