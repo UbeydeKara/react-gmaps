@@ -3,11 +3,11 @@ import { alpha, styled } from '@mui/material/styles';
 import { Stack, TextField, Typography, StepLabel, Step, Paper, Button, Stepper, Box, Fade } from '@mui/material';
 import { Clear, Add, LocationOn } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
-import PlacesWithStandaloneSearchBox from "./SearchBox";
 import { insertPlace, setPlaces } from '../actions/places';
 import { insertLocation, setLocations } from '../actions/locations';
+import PlaceBox from './PlaceBox';
 
-export default function RouteForm(props) {
+export default function RouteForm() {
     const places = useSelector((state) => state.places)
     const dispatch = useDispatch()
 
@@ -22,8 +22,8 @@ export default function RouteForm(props) {
 
     const addItem = () => {
         if (places[places.length - 1] != "") {
-            dispatch(insertPlace("", places.length - 1))
-            dispatch(insertLocation("", places.length - 1))
+            dispatch(insertPlace("", places.length))
+            dispatch(insertLocation("", places.length))
         }
     }
 
@@ -36,15 +36,15 @@ export default function RouteForm(props) {
         <ContentStyle>
             <Paper elevation={4} sx={{ p: 3, borderCollapse: 'separate', borderSpacing: '0 15px' }}>
                 <Stack direction={{ xs: 'column', md: 'row' }} spacing={2} sx={{ color: 'e8f2f5', borderColor: 'e8f2f5' }}>
-                    <PlacesWithStandaloneSearchBox id={0} placeholder="Başlangıç" />
+                    <PlaceBox id={0} label="Başlangıç" />
                     {places.slice(2, places.length).map((item, index) => (
                         <Fade key={index} in={true}>
                             <Box key={index}>
-                                <PlacesWithStandaloneSearchBox item id={index + 1} key={index} placeholder="Hedef" />
+                                <PlaceBox id={index + 2} key={index} label="Hedef" />
                             </Box>
                         </Fade>
                     ))}
-                    <PlacesWithStandaloneSearchBox id={places.length - 1} placeholder="Varış" />
+                    <PlaceBox id={1} label="Varış" />
                     <Button variant="contained" size="small" sx={{ minWidth: 44 }} onClick={clearAll}>
                         <Clear />
                     </Button>
@@ -53,15 +53,26 @@ export default function RouteForm(props) {
                     <Add /> Hedef Ekle
                 </Button>
                 <Stepper xs={{ width: '100%' }}>
-
-                    {places.map((e, i) => (
-                        e == "" ? null :
+                    {places[0] != "" ?
+                        <Fade in={true}>
+                            <Step>
+                                <StepLabel>{places[0].length > 25 ? places[0].substr(0, 25) + '...' : places[0]}</StepLabel>
+                            </Step>
+                        </Fade> : null}
+                    {places.length > 2 ? places.slice(2, places.length).filter(x => x != "")
+                        .map((e, i) => (
                             <Fade key={i} in={true}>
                                 <Step>
-                                    <StepLabel>{e.length > 30 ? e.substr(0, 30) + '...' : e}</StepLabel>
+                                    <StepLabel>{e.length > 25 ? e.substr(0, 25) + '...' : e}</StepLabel>
                                 </Step>
                             </Fade>
-                    ))}
+                        )) : null}
+                    {places[1] != "" ?
+                        <Fade in={true}>
+                            <Step>
+                                <StepLabel>{places[1].length > 25 ? places[1].substr(0, 25) + '...' : places[1]}</StepLabel>
+                            </Step>
+                        </Fade> : null}
                 </Stepper>
             </Paper>
         </ContentStyle>

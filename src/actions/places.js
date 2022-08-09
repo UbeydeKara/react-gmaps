@@ -1,4 +1,4 @@
-import { SET_PLACES, INSERT_PLACE, REMOVE_PLACE, UPDATE_PLACE } from "./types";
+import { SET_PLACES, INSERT_PLACE, REMOVE_PLACE, UPDATE_PLACE, SWAP_PLACE } from "./types";
 
 export const setPlaces = (places) => ({
     type: SET_PLACES,
@@ -20,4 +20,9 @@ export const insertPlace = (places, index) => ({
 export const removePlace = (index) => ({
     type: REMOVE_PLACE,
     index: index
+});
+
+export const swapPlace = (order) => ({
+    type: SWAP_PLACE,
+    order: order
 });

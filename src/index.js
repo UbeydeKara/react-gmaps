@@ -26,7 +26,7 @@ function App() {
         loadingElement={<div style={{ height: `100%` }} />}
         containerElement={<div style={{ height: `100%` }} />}
         mapElement={<div style={{ height: `100vh` }} />}
-        defaultCenter={{ lat: 38.7450771, lng: 35.420061 }}
+        defaultCenter={{ lat: 40.1639758, lng: 31.9186571 }}
         defaultZoom={14}
         markerLoc={markerLoc}
         drawMarker={drawMarker}

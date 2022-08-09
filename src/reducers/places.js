@@ -1,9 +1,9 @@
-import { SET_PLACES, INSERT_PLACE, REMOVE_PLACE, UPDATE_PLACE } from "../actions/types";
+import { SET_PLACES, INSERT_PLACE, REMOVE_PLACE, UPDATE_PLACE, SWAP_PLACE } from "../actions/types";
 
 const initialState = ["", ""];
 
 export default function (state = initialState, action) {
-    const { type, payload, index } = action;
+    const { type, payload, index, order } = action;
     switch (type) {
 
         case SET_PLACES:
@@ -30,6 +30,16 @@ export default function (state = initialState, action) {
                 ...state.slice(0, index),
                 ...state.slice(index + 1)
             ]
+
+        case SWAP_PLACE:
+            let data = [...state];
+            let ordered_data = [...state];
+
+            for (var i = 0; i < order.length; i++) {
+                ordered_data[i + 2] = data[order[i] + 2];
+            }
+
+            return ordered_data;
 
         default:
             return state;

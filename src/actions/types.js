@@ -2,6 +2,7 @@ export const SET_PLACES = "SET_PLACES";
 export const INSERT_PLACE = "INSERT_PLACE";
 export const UPDATE_PLACE = "UPDATE_PLACE";
 export const REMOVE_PLACE = "REMOVE_PLACE";
+export const SWAP_PLACE = "SWAP_PLACE";
 
 export const SET_LOCATIONS = "SET_LOCATIONS";
 export const INSERT_LOCATIONS = "INSERT_LOCATIONS";
