@@ -1,8 +1,6 @@
 import { SET_PLACES, INSERT_PLACE, REMOVE_PLACE, UPDATE_PLACE, SWAP_PLACE } from "../actions/types";
 
-const initialState = ["Hacıkara, Karapınar 3. Sk. Özlem Koop.", "Hacıkara, Karapınar 3. Sk. Özlem Koop."
-    , "Hacıkara, Karapınar 3. Sk. Özlem Koop.", "Hacıkara, Karapınar 3. Sk. Özlem Koop.", "Hacıkara, Karapınar 3. Sk. Özlem Koop."
-    , "Hacıkara, Karapınar 3. Sk. Özlem Koop.", "Hacıkara, Karapınar 3. Sk. Özlem Koop.", "Hacıkara, Karapınar 3. Sk. Özlem Koop.", "Hacıkara, Karapınar 3. Sk. Özlem Koop."];
+const initialState = ["", ""];
 
 export default function (state = initialState, action) {
     const { type, payload, index, order } = action;
