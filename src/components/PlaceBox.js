@@ -60,14 +60,20 @@ export default function PlaceBox(props) {
     };
 
     useEffect(() => {
-        autocompleteService.current =
-            new window.google.maps.places.AutocompleteService();
+        if (window.google) {
+            autocompleteService.current =
+                new window.google.maps.places.AutocompleteService();
 
-        placeService.current =
-            new window.google.maps.places.PlacesService(document.getElementById('google-map-demo'));
-    }, []);
+            placeService.current =
+                new window.google.maps.places.PlacesService(document.getElementById('google-map-demo'));
+        }
+    }, [window.google]);
 
     useEffect(() => {
+        if (!window.google) {
+            return undefined;
+        }
+
         let active = true;
 
         if (inputValue === '') {
@@ -78,7 +84,7 @@ export default function PlaceBox(props) {
         fetch({
             input: inputValue, bounds: new window.google.maps.LatLngBounds(
                 new window.google.maps.LatLng(40.1639758, 31.9186571),
-                new window.google.maps.LatLng(40.1639758, 31.9186571)
+                new window.google.maps.LatLng(40.1682181, 31.9204418)
             )
         }, (results) => {
             if (active) {

@@ -10,4 +10,5 @@ export const UPDATE_LOCATIONS = "UPDATE_LOCATIONS";
 export const REMOVE_LOCATIONS = "REMOVE_LOCATIONS";
 
 export const googleMapsApiKey = "AIzaSyA_0YAq2rFYEM_fZeH1-Gy0WIY2aolYm68";
-export const googleMapURL = 'https://maps.googleapis.com/maps/api/js?key=' + googleMapsApiKey + '&libraries=geometry,drawing,places'
+export const googleMapURL = 'https://maps.googleapis.com/maps/api/js?key=' + googleMapsApiKey +
+    '&libraries=geometry,drawing,places&region=TR&language=tr'
